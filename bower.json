@@ -1,0 +1,9 @@
+{
+  "name": "lousoua",
+  "description": "Lou's project",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15"
+  }
+}
