@@ -7,8 +7,8 @@ var
 	jade = require('gulp-jade'),
 	inject = require('gulp-inject'),
 	bower = require('gulp-bower'),
-	bowerFiles = require('main-bower-files'),
 	ngAnnotate = require('gulp-ng-annotate'),
+	bowerFiles = require('main-bower-files'),
 	browserSync = require('browser-sync'),
 	reload = browserSync.reload;
 
