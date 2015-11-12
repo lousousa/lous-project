@@ -6,7 +6,6 @@ var
 	uglify = require('gulp-uglify'),
 	jade = require('gulp-jade'),
 	inject = require('gulp-inject'),
-	bower = require('gulp-bower'),
 	ngAnnotate = require('gulp-ng-annotate'),
 	bowerFiles = require('main-bower-files'),
 	browserSync = require('browser-sync'),
@@ -41,10 +40,7 @@ gulp.task('templates', function() {
 		.pipe(gulp.dest('./dist/'))
 		.pipe(reload({stream: true}));
 });
-gulp.task('bower', ['templates'],  function() {
-	return bower({cmd: 'update'});
-});
-gulp.task('bower-inject', ['bower'], function() {
+gulp.task('bower-inject', ['templates'], function() {
 	gulp.src('./dist/index.html')
 		.pipe(inject(gulp.src(bowerFiles()), {name: 'bower', addRootSlash: false, relative: true}))
 		.pipe(gulp.dest('./dist/'));
@@ -52,7 +48,7 @@ gulp.task('bower-inject', ['bower'], function() {
 gulp.task('resources', function() {
 	return gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
 });
-gulp.task('watch', ['styles', 'scripts', 'templates', 'resources'], function() {
+gulp.task('watch', ['styles', 'scripts', 'bower-inject', 'resources'], function() {
 	gulp.watch('./app/**/*.jade', ['templates']);
 	gulp.watch(styles, ['styles']);
 	gulp.watch(scripts, ['scripts']);
@@ -60,5 +56,4 @@ gulp.task('watch', ['styles', 'scripts', 'templates', 'resources'], function() {
 gulp.task('browser-sync', function() {
 	browserSync({server: {baseDir: './dist/'}});
 });
-gulp.task('init', ['bower-inject', 'browser-sync', 'watch']);
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['watch', 'browser-sync']);

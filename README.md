@@ -12,6 +12,6 @@ Just another project starter for web development. Featured:
 
 ## Quick Install
 
-1. npm install
-2. gulp init _(used at first time for install the bower dependencies, at the next ones just type "gulp")_
+1. npm install && bower install
+2. gulp
 3. Happy coding!
