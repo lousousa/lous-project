@@ -37,13 +37,13 @@ gulp.task('templates', function() {
 	return gulp.src('app/**/*.jade')
 		.pipe(plumber())
 		.pipe(jade({pretty: true}))
-		.pipe(gulp.dest('./dist/'))
-		.pipe(reload({stream: true}));
+		.pipe(gulp.dest('./dist/'));
 });
 gulp.task('bower-inject', ['templates'], function() {
 	gulp.src('./dist/index.html')
 		.pipe(inject(gulp.src(bowerFiles()), {name: 'bower', addRootSlash: false, relative: true}))
-		.pipe(gulp.dest('./dist/'));
+		.pipe(gulp.dest('./dist/'))
+		.pipe(reload({stream: true}));
 });
 gulp.task('resources', function() {
 	return gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
