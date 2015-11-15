@@ -49,7 +49,7 @@ gulp.task('resources', function() {
 	return gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
 });
 gulp.task('watch', ['styles', 'scripts', 'bower-inject', 'resources'], function() {
-	gulp.watch('./app/**/*.jade', ['templates']);
+	gulp.watch('./app/**/*.jade', ['bower-inject']);
 	gulp.watch(styles, ['styles']);
 	gulp.watch(scripts, ['scripts']);
 });
