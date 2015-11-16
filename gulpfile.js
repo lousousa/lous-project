@@ -50,7 +50,7 @@ gulp.task('resources', function() {
 });
 gulp.task('watch', function() {
 	gulp.watch('./app/**/*.jade', ['bower-inject']);
-	gulp.watch(styles, ['styles']);
+	gulp.watch('app/assets/scss/**/*.scss', ['styles']);
 	gulp.watch(scripts, ['scripts']);
 });
 gulp.task('browser-sync', function() {
