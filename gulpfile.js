@@ -17,15 +17,15 @@ var
 	resources = ['app/assets/{!(scss|vendor), **}/*'];
 
 gulp.task('styles', function() {
-	return gulp.src(styles)
+	gulp.src(styles)
 		.pipe(plumber())
-		.pipe(sass({outputStyle: 'compressed'}))
 		.pipe(concat('app.min.css'))
+		.pipe(sass({outputStyle: 'compressed'}))
 		.pipe(gulp.dest('./dist/assets/css/'))
 		.pipe(reload({stream: true}));
 });
 gulp.task('scripts', function() {
-	return gulp.src(scripts)
+	gulp.src(scripts)
 		.pipe(plumber())
 		.pipe(ngAnnotate())
 		.pipe(uglify())
@@ -46,9 +46,9 @@ gulp.task('bower-inject', ['templates'], function() {
 		.pipe(reload({stream: true}));
 });
 gulp.task('resources', function() {
-	return gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
+	gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
 });
-gulp.task('watch', ['styles', 'scripts', 'bower-inject', 'resources'], function() {
+gulp.task('watch', function() {
 	gulp.watch('./app/**/*.jade', ['bower-inject']);
 	gulp.watch(styles, ['styles']);
 	gulp.watch(scripts, ['scripts']);
@@ -56,4 +56,4 @@ gulp.task('watch', ['styles', 'scripts', 'bower-inject', 'resources'], function(
 gulp.task('browser-sync', function() {
 	browserSync({server: {baseDir: './dist/'}});
 });
-gulp.task('default', ['watch', 'browser-sync']);
+gulp.task('default', ['watch', 'browser-sync', 'styles', 'scripts', 'bower-inject', 'resources']);
