@@ -13,7 +13,7 @@ var
 
 var 
 	styles = ['app/assets/vendor/**/*.css', 'app/assets/scss/app.scss'],
-	scripts = ['app/scripts/**/*.js'],
+	scripts = ['app/**/*.js'],
 	resources = ['app/assets/{!(scss|vendor), **}/*'];
 
 gulp.task('styles', function() {
@@ -30,7 +30,7 @@ gulp.task('scripts', function() {
 		.pipe(ngAnnotate())
 		.pipe(uglify())
 		.pipe(concat('app.min.js'))
-		.pipe(gulp.dest('./dist/scripts/'))
+		.pipe(gulp.dest('./dist/'))
 		.pipe(reload({stream: true}));
 });
 gulp.task('templates', function() {
