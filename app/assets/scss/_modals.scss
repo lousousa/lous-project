@@ -2,7 +2,7 @@
 	font-size: 0px; padding-top: $paddingTop; overflow-y: auto;
 	background-color: black; background-color: rgba(0, 0, 0, .8);
 	position: fixed; z-index: 999; top: 0; right: 0; bottom: 0; left: 0;
-	visibility: $visibility; opacity: $opacity; transtion: .25s;
+	visibility: $visibility; opacity: $opacity; transition: .25s;
 	>.panel {
 		max-width: 640px; margin: 0 auto;
 		>.container-title {
