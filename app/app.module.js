@@ -3,10 +3,11 @@
 
 	function StateProvider($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
-		$stateProvider('main', {
-			abstract: true,
-			templateUrl: 'layout/layout.html',
-			controller: 'LayoutCtrl as vm'
-		});
+		$stateProvider
+			.state('main', {
+				abstract: true,
+				templateUrl: 'layout/layout.html',
+				controller: 'LayoutCtrl as vm'
+			});
 	}
 })();
