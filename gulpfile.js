@@ -39,8 +39,7 @@ gulp.task('jade', function() {
 	return gulp.src('app/**/*.jade')
 		.pipe(plumber())
 		.pipe(jade({pretty: true}))
-		.pipe(gulp.dest('./dist/'))
-		.pipe(reload({stream: true}));
+		.pipe(gulp.dest('./dist/'));
 });
 gulp.task('bower-inject', ['jade'], function() {
 	gulp.src('./dist/index.html')
@@ -52,7 +51,7 @@ gulp.task('resources', function() {
 	gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
 });
 gulp.task('watch', function() {
-	gulp.watch('./app/**/*.jade', ['jade']);
+	gulp.watch('./app/**/*.jade', ['bower-inject']);
 	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
 	gulp.watch(scripts, ['coffee']);
 });
