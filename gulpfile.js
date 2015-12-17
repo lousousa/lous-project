@@ -1,10 +1,11 @@
 var 
 	gulp = require('gulp'),
+	jade = require('gulp-jade'),
+	sass = require('gulp-sass'),
+	coffee = require('gulp-coffee'),
 	concat = require('gulp-concat'),
 	plumber = require('gulp-plumber'),
-	sass = require('gulp-sass'),
 	uglify = require('gulp-uglify'),
-	jade = require('gulp-jade'),
 	inject = require('gulp-inject'),
 	ngAnnotate = require('gulp-ng-annotate'),
 	bowerFiles = require('main-bower-files'),
@@ -13,23 +14,24 @@ var
 
 var 
 	styles = ['app/assets/vendor/**/*.css', 'app/assets/scss/app.scss'],
-	scripts = ['app/**/*.js'],
+	scripts = ['app/**/*.coffee'],
 	resources = ['app/assets/{!(scss|vendor), **}/*'];
 
 gulp.task('styles', function() {
 	gulp.src(styles)
 		.pipe(plumber())
-		.pipe(concat('app.min.css'))
 		.pipe(sass({outputStyle: 'compressed'}))
+		.pipe(concat('app.min.css'))
 		.pipe(gulp.dest('./dist/assets/css/'))
 		.pipe(reload({stream: true}));
 });
 gulp.task('scripts', function() {
 	gulp.src(scripts)
 		.pipe(plumber())
+		.pipe(coffee({bare: true}))
+		.pipe(concat('app.min.js'))		
 		.pipe(ngAnnotate())
-		.pipe(uglify())
-		.pipe(concat('app.min.js'))
+		//.pipe(uglify())
 		.pipe(gulp.dest('./dist/'))
 		.pipe(reload({stream: true}));
 });
