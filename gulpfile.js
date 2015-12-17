@@ -17,7 +17,7 @@ var
 	scripts = ['app/**/*.coffee'],
 	resources = ['app/assets/{!(scss|vendor), **}/*'];
 
-gulp.task('styles', function() {
+gulp.task('sass', function() {
 	gulp.src(styles)
 		.pipe(plumber())
 		.pipe(sass({outputStyle: 'compressed'}))
@@ -25,23 +25,24 @@ gulp.task('styles', function() {
 		.pipe(gulp.dest('./dist/assets/css/'))
 		.pipe(reload({stream: true}));
 });
-gulp.task('scripts', function() {
+gulp.task('coffee', function() {
 	gulp.src(scripts)
 		.pipe(plumber())
-		.pipe(coffee({bare: true}))
+		.pipe(coffee())
 		.pipe(concat('app.min.js'))		
 		.pipe(ngAnnotate())
-		//.pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest('./dist/'))
 		.pipe(reload({stream: true}));
 });
-gulp.task('templates', function() {
+gulp.task('jade', function() {
 	return gulp.src('app/**/*.jade')
 		.pipe(plumber())
 		.pipe(jade({pretty: true}))
-		.pipe(gulp.dest('./dist/'));
+		.pipe(gulp.dest('./dist/'))
+		.pipe(reload({stream: true}));
 });
-gulp.task('bower-inject', ['templates'], function() {
+gulp.task('bower-inject', ['jade'], function() {
 	gulp.src('./dist/index.html')
 		.pipe(inject(gulp.src(bowerFiles()), {name: 'bower', addRootSlash: false, relative: true}))
 		.pipe(gulp.dest('./dist/'))
@@ -51,11 +52,11 @@ gulp.task('resources', function() {
 	gulp.src(resources).pipe(gulp.dest('./dist/assets/'));
 });
 gulp.task('watch', function() {
-	gulp.watch('./app/**/*.jade', ['bower-inject']);
-	gulp.watch('app/assets/scss/**/*.scss', ['styles']);
-	gulp.watch(scripts, ['scripts']);
+	gulp.watch('./app/**/*.jade', ['jade']);
+	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
+	gulp.watch(scripts, ['coffee']);
 });
 gulp.task('browser-sync', function() {
 	browserSync({server: {baseDir: './dist/'}});
 });
-gulp.task('default', ['watch', 'browser-sync', 'styles', 'scripts', 'bower-inject', 'resources']);
+gulp.task('default', ['watch', 'browser-sync', 'sass', 'coffee', 'bower-inject', 'resources']);

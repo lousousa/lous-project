@@ -8,6 +8,7 @@ Just another project starter for web development. Featured:
 * Bower
 * Jade
 * SASS
+* CoffeeScript
 * AngularJS
 
 ## Quick Install
