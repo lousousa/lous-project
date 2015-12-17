@@ -11,4 +11,5 @@ StateProvider = ($stateProvider, $urlRouterProvider)->
 angular
 	.module('', [
 		'ui.router'
-]).config(StateProvider)
+])
+	.config(StateProvider)

@@ -8,6 +8,7 @@ var
 	uglify = require('gulp-uglify'),
 	inject = require('gulp-inject'),
 	ngAnnotate = require('gulp-ng-annotate'),
+	gulpif = require('gulp-if'),
 	bowerFiles = require('main-bower-files'),
 	browserSync = require('browser-sync'),
 	reload = browserSync.reload;
@@ -17,10 +18,15 @@ var
 	scripts = ['app/**/*.coffee'],
 	resources = ['app/assets/{!(scss|vendor), **}/*'];
 
+var args = require('yargs')
+  .alias('p', 'prod')
+  .default('prod', false)
+  .argv;
+
 gulp.task('sass', function() {
 	gulp.src(styles)
 		.pipe(plumber())
-		.pipe(sass({outputStyle: 'compressed'}))
+		.pipe(sass(gulpif(args.prod, {outputStyle: 'compressed'})))
 		.pipe(concat('app.min.css'))
 		.pipe(gulp.dest('./dist/assets/css/'))
 		.pipe(reload({stream: true}));
@@ -31,7 +37,7 @@ gulp.task('coffee', function() {
 		.pipe(coffee())
 		.pipe(concat('app.min.js'))		
 		.pipe(ngAnnotate())
-		.pipe(uglify())
+		.pipe(gulpif(args.prod, uglify()))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(reload({stream: true}));
 });

@@ -2,4 +2,5 @@ LayoutCtrl = ()->
 	vm = @
 	return
 
-angular.module('').controller('LayoutCtrl', LayoutCtrl)
+angular.module('')
+	.controller('LayoutCtrl', LayoutCtrl)
