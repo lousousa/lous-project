@@ -28,6 +28,7 @@ args = yargs
 gulp.task 'copy-files', ()->
 	gulp.src glob.files2Copy
 		.pipe gulp.dest './dist/assets/'
+	return
 
 gulp.task 'coffee', ()->
 	gulp.src glob.coffee
@@ -38,14 +39,16 @@ gulp.task 'coffee', ()->
 		.pipe gulpif args.prod, uglify()
 		.pipe gulp.dest './dist/'
 		.pipe reload {stream: true}
+	return
 		
 gulp.task 'sass', ()->
 	gulp.src glob.sass
 		.pipe plumber()
-		.pipe sass gulpif args.prod, {outputStyle: 'expanded'}
+		.pipe sass gulpif args.prod, {outputStyle: 'compressed'}
 		.pipe concat 'app.min.css'
 		.pipe gulp.dest './dist/assets/'
 		.pipe reload {stream: true}
+	return
 
 gulp.task 'jade', ()->
 	gulp.src glob.jade
@@ -58,14 +61,17 @@ gulp.task 'bower-inject', ['jade'], ()->
 		.pipe inject gulp.src(bowerFiles()), {name: 'bower', addRootSlash: false, relative: true}
 		.pipe gulp.dest './dist'
 		.pipe reload {stream: true}
+	return
 	
 gulp.task 'watch', ()->
 	gulp.watch glob.coffee, ['coffee']
 	gulp.watch glob.sass, ['sass']
 	gulp.watch glob.jade, ['bower-inject']
+	return
 
 gulp.task 'browser-sync', ()->
 	browserSync {server: {baseDir: './dist/'}}
+	return
 
 gulp.task 'build', ['sass', 'coffee', 'bower-inject', 'copy-files']
 
