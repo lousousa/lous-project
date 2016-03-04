@@ -9,7 +9,7 @@ stateProvider = ($stateProvider, $urlRouterProvider)->
 	return
 
 angular
-	.module("", [
+	.module("helloApp", [
 		"ui.router"
 ])
 	.config(stateProvider)
