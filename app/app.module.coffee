@@ -1,15 +1,15 @@
-StateProvider = ($stateProvider, $urlRouterProvider)->
-	$urlRouterProvider.otherwise('/')
+stateProvider = ($stateProvider, $urlRouterProvider)->
+	$urlRouterProvider.otherwise("/")
 	$stateProvider
-		.state('main', {
+		.state("main", {
 			abstract: true
-			templateUrl: 'layout/layout.html'
-			controller: 'LayoutCtrl as vm'
+			templateUrl: "layout/layout.html"
+			controller: "LayoutCtrl as vm"
 		})
 	return
 
 angular
-	.module('', [
-		'ui.router'
+	.module("", [
+		"ui.router"
 ])
-	.config(StateProvider)
+	.config(stateProvider)
