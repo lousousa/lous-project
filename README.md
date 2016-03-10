@@ -17,4 +17,4 @@ Just another project starter for web development. Featured:
 2. gulp
 3. Happy coding!
 
-note: _gulp -p_ for build production version, compressed
+note: _gulp -p_ for build production version, compressed.
