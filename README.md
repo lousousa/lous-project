@@ -16,3 +16,5 @@ Just another project starter for web development. Featured:
 1. npm install && bower install
 2. gulp
 3. Happy coding!
+
+note: _gulp -p_ for build production version, compressed
