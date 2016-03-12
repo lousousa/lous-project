@@ -21,7 +21,9 @@ glob = {
 
 args = yargs
 	.alias "p", "prod"
+	.alias "n", "nobrowser"
 	.default "prod", false
+	.default "nobrowser", false
 	.argv
 
 altExt = if args.prod then ".min" else ""
@@ -71,7 +73,8 @@ gulp.task "watch", ->
 	return
 
 gulp.task "browser-sync", ->
-	browserSync {server: {baseDir: "./dist/"}}
+	console.log args.nobrowser
+	browserSync {server: {baseDir: "./dist/"}, open: !args.nobrowser}
 	return
 
 gulp.task "build", ["sass", "coffee", "inject", "copy-files"]
