@@ -73,7 +73,6 @@ gulp.task "watch", ->
 	return
 
 gulp.task "browser-sync", ->
-	console.log args.nobrowser
 	browserSync {server: {baseDir: "./dist/"}, open: !args.nobrowser}
 	return
 
