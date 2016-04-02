@@ -10,8 +10,14 @@ Just another project starter for web development. Featured:
 * SASS
 * CoffeeScript
 * AngularJS
+* JQuery (use in moderation)
 
-## Quick Install
+Icons pack:
+
+* Font Awesome
+* Metro Icon Fonts (no full Metro UI CSS pack)
+
+## Getting Started
 
 1. npm install && bower install
 2. gulp
