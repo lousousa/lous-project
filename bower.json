@@ -9,6 +9,7 @@
     "angular-ui-router": "^0.2.18",
     "ngstorage": "^0.3.10",
     "font-awesome": "^4.5.0",
-    "jquery": "^2.2.2"
+    "jquery": "^2.2.2",
+    "Ionicons": "ionicons#^2.0.1"
   }
 }
