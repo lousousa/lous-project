@@ -12,11 +12,15 @@ Just another project starter for web development. Featured:
 * AngularJS
 * JQuery (use in moderation)
 
-Icons pack included:
+**Icons pack included:**
 
 * [Font Awesome](https://fortawesome.github.io/Font-Awesome/icons/)
 * [Ionicons](http://ionicons.com/)
 * [Metro Icon Fonts](http://metroui.org.ua/font.html) (no full Metro UI CSS pack)
+
+**Project included:**
+
+* [Matadora](https://github.com/lousousa/matadora) (CSS library)
 
 ## Getting Started
 
