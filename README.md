@@ -1,6 +1,7 @@
 # Lou's Project
+##front-end version
 
-## Description
+### Description
 
 Just another project starter for web development. Featured:
 
@@ -9,7 +10,7 @@ Just another project starter for web development. Featured:
 * Jade
 * SASS
 * CoffeeScript
-* AngularJS
+* AngularJS (+sanitize, +animate, +ui-router)
 * JQuery (use in moderation)
 
 **Icons pack included:**
@@ -22,7 +23,7 @@ Just another project starter for web development. Featured:
 
 * [Matadora](https://github.com/lousousa/matadora) (CSS library)
 
-## Getting Started
+### Getting Started
 
 1. npm install && bower install
 2. gulp
