@@ -1,4 +1,4 @@
-# Lou's Project ##front-end version
+## Lou's Project ~ front-end version
 
 ### Description
 
