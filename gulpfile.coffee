@@ -16,7 +16,7 @@ glob = {
 	coffee: "./app/**/*.coffee"
 	sass: "./app/**/*.scss"
 	jade: "./app/**/*.jade"
-	files2Copy: ["./app/assets/{!(scss), **}/{!(*.coffee|*.scss|*.jade), *.*}"]
+	files2Copy: ["./app/assets/**/{!(*.coffee|*.scss|*.jade), *.*}"]
 }
 
 args = yargs
